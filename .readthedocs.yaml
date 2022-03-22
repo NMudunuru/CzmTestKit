@@ -1,0 +1,15 @@
+version: 1
+
+build:
+  tools:
+    python: "3.9"
+
+python:
+  # Install our python package before building the docs
+  install:
+    - method: pip
+      path: .
+
+formats:
+  - pdf
+  - epub
