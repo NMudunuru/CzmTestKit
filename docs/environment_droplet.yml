@@ -62,7 +62,7 @@ dependencies:
   - pygments=2.10.0
   - pyopenssl=20.0.1
   - pyparsing=2.4.7
-  - pypy3.7==7.3.7
+  - pypy3.9==7.3.8
   - pyrsistent=0.17.3
   - pysocks=1.7.1
   - python=3.9.7
