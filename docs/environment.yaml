@@ -8,7 +8,7 @@ dependencies:
   - nbsphinx-link==1.3.0
   - Jinja2==2.11
   - myst-parser==0.15.2
-  - docutils==0.18.1
+  - docutils==0.18
   - ipykernel
   - pip
   - pip:
