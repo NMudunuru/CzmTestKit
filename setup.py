@@ -11,7 +11,8 @@ setup(
     long_description_content_type='text/markdown',
     author='Nanditha Mudunuru, Miguel Bessa, Albert Turon',
     author_email='nanditha.mudunuru@gmail.com',
-    url='https://github.com/NMudunuru/CzmTestKit.git',
+    url='https://pypi.org/project/czmtestkit/',
+    download_url='https://github.com/NMudunuru/CzmTestKit.git',
     project_urls={
         'Documentation': 'https://czmtestkit.readthedocs.io/en/latest/',
     },

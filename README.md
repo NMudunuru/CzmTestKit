@@ -1,4 +1,4 @@
-The python package ``czmtestkit`` works in parallel to ``Abaqus/CAE``, mainly to test user element subroutines of cohesive zone models.
+The python package ``czmtestkit`` works parallel to ``Abaqus/CAE`` mainly to test user element subroutines of cohesive zone models.
 Additionally, the package facilitates the implementaion of the ``Mode Partitioning Method`` for mixed-mode characterization of interfaces proposed by [Moreira et al., (2020)](#1).
 
 # Prerequisites
@@ -38,7 +38,7 @@ Overview of current functionality of the package:
 1) Read data from converged increments in `.msg` files.
 1) Analytical models for the ADCB, ASLB and end notch flexure tests are also available and can be used to find fracture resistance curves from force-displacement curves or to predict force-displacement curves given the specimen dimensions and fracture properties.
 
-Examples are avaiable in the *[documentation](https://czmtestkit.readthedocs.io/en/latest/)* and the package is on *[PyPI](https://pypi.org/project/CzmTestKit/)*. 
+Examples are avaiable in the *[documentation](https://czmtestkit.readthedocs.io/en/latest/)* and the package is on *[PyPI](https://pypi.org/project/czmtestkit/)*. 
 The code documentation for developers will be made available soon.
 
 
