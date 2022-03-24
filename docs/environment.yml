@@ -1,0 +1,15 @@
+name: docs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipykernel
+  - sphinx
+  - myst-parser
+  - nbsphinx
+  - nbsphinx-link
+  - docutils
+  - pip
+  - pip:
+    - sphinx_rtd_theme
+    - groundwork-sphinx-theme
