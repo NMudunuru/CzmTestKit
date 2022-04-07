@@ -1,0 +1,29 @@
+# YAML 1.2
+---
+authors: 
+  -
+    family-names: Mudunuru
+    given-names: Nanditha 
+  -
+    family-names: Bessa
+    given-names: Miguel A.
+    orcid: "https://orcid.org/0000-0002-6216-0355"
+  -
+    family-names: Turon Travesa
+    given-names: Albert
+    orcid: "https://orcid.org/0000-0002-2554-2653"
+cff-version: "1.0.0"
+keywords: 
+  - Abaqus/CAE
+  - Cohesive Zone Model
+  - User Element Sobroutine
+  - Asymmetric Double Cantilever Beam
+  - Asymmetric Single Leg Bending
+  - ADCB
+  - ASLB
+  - Interface Characterization
+  - Standardized Tests
+message: "Please cite it using these metadata."
+title: "CzmTestKit"
+version: "1.0"
+...
