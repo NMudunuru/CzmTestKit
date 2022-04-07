@@ -1,5 +1,3 @@
-# Contributing Guidelines
-
 Contributers are to kindly stick to the following guidelines and code of conduct to avoid conflicts and misunderstandings during the collaboration process.
 
 ## Installation
