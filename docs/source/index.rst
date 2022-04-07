@@ -8,7 +8,10 @@ Content
 	Introduction <packageRead.rst>
 	
 	Examples <TestCase.rst>
-
+	
+	Guidelines for developers <contGuide.rst>
+	
+	Source code documentation <CodDoc.rst>
 
 
 Indices and tables
