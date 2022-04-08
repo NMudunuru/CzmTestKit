@@ -3,41 +3,41 @@
 cff-version: "1.0.0"
 message: "If you use this software, please cite it as below."
 references:
-- type: software
-  authors: 
-    -
-      family-names: Mudunuru
-      given-names: Nanditha 
-      email: nanditha.mudunuru@gmail.com
-      website: https://in.linkedin.com/in/nanditha-mudunuru-952296104
-    -
-      family-names: Bessa
-      given-names: Miguel A.
-      orcid: "https://orcid.org/0000-0002-6216-0355"
-      affiliation: "TU Delft, Faculty of Mechanical, Maritime and Materials Engineering (3mE)"
-    -
-      family-names: Turon Travesa
-      given-names: Albert
-      orcid: "https://orcid.org/0000-0002-2554-2653"
-      affiliation: "Universitat de Girona, Departament d'Enginyeria Mecànica i de la Construcció Industrial"
-  keywords: 
-    - Abaqus/CAE
-    - Cohesive Zone Model
-    - User Element Sobroutine
-    - Asymmetric Double Cantilever Beam
-    - Asymmetric Single Leg Bending
-    - ADCB
-    - ASLB
-    - Interface Characterization
-    - Standardized Tests
-  programming-languages:
-    - python
-  repository-code: https://github.com/NMudunuru/CzmTestKit.git
-  repository-artifact: https://pypi.org/project/czmtestkit/
-  doi: 10.4121/19410146
-  title: "Python package to test the mixed-mode response of user element subroutines of cohesive zone elements for implementation with Abaqus/CAE"
-  version: "1.0.0"
-  date-published: 2022-03-22
-  license: GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
-  license-url: https://www.gnu.org/licenses/gpl-3.0.en.html
+type: software
+authors: 
+  -
+    family-names: Mudunuru
+    given-names: Nanditha 
+    email: nanditha.mudunuru@gmail.com
+    website: https://in.linkedin.com/in/nanditha-mudunuru-952296104
+  -
+    family-names: Bessa
+    given-names: Miguel A.
+    orcid: "https://orcid.org/0000-0002-6216-0355"
+    affiliation: "TU Delft, Faculty of Mechanical, Maritime and Materials Engineering (3mE)"
+  -
+    family-names: Turon Travesa
+    given-names: Albert
+    orcid: "https://orcid.org/0000-0002-2554-2653"
+    affiliation: "Universitat de Girona, Departament d'Enginyeria Mecànica i de la Construcció Industrial"
+keywords: 
+  - Abaqus/CAE
+  - Cohesive Zone Model
+  - User Element Sobroutine
+  - Asymmetric Double Cantilever Beam
+  - Asymmetric Single Leg Bending
+  - ADCB
+  - ASLB
+  - Interface Characterization
+  - Standardized Tests
+programming-languages:
+  - python
+repository-code: https://github.com/NMudunuru/CzmTestKit.git
+repository-artifact: https://pypi.org/project/czmtestkit/
+doi: 10.4121/19410146
+title: "Python package to test the mixed-mode response of user element subroutines of cohesive zone elements for implementation with Abaqus/CAE"
+version: "1.0.0"
+date-published: 2022-03-22
+license: GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
+license-url: https://www.gnu.org/licenses/gpl-3.0.en.html
 ...
