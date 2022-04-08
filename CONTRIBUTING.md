@@ -1,6 +1,6 @@
 **Code of conduct**
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) 
 
 Contributers are to kindly stick to the following guidelines and the contributor covenant code of conduct to avoid conflicts and misunderstandings during the collaboration process.
 
@@ -40,7 +40,7 @@ $ python -m pip install .
 
 ### Setup for testing the documentation
 
-The `CzmTestKit` [documentation](https://czmtestkit.readthedocs.io/en/latest/index.html) is hosted by `readthedocs`, where the changes merged to `main` branch of the [git repository](https://github.com/NMudunuru/CzmTestKit.git) are automatically reflected in the published documentation. 
+The package [documentation](https://czmtestkit.readthedocs.io/en/latest/index.html) is hosted by `readthedocs`, where the changes merged to `main` branch of the [git repository](https://github.com/NMudunuru/CzmTestKit.git) are automatically reflected in the published documentation. 
 However, it is necessary to locally test the documentation before pushing to the `main`. Use the following steps to locally build and test the documentation.
 
 #### Windows 10
