@@ -50,6 +50,25 @@ The code documentation for developers will be made available soon.
 
 <a id="2">[2]</a> Abedin Nejad , Sobhan (2019) Linking ABAQUS with FORTRAN user manual. DOI:[10.13140/RG.2.2.19391.87206](http://dx.doi.org/10.13140/RG.2.2.19391.87206)
 
+# Cite
+
+**APA**
+```
+Mudunuru, N., Bessa, M. A., & Turon Travesa, A. Python package to test the mixed-mode response of user element subroutines of cohesive zone elements for implementation with Abaqus/CAE (Version 1.0.0) [Computer software]. https://doi.org/10.4121/19410146
+```
+
+**bibtex**
+```
+@software{Mudunuru_Python_package_to,
+author = {Mudunuru, Nanditha and Bessa, Miguel A. and Turon Travesa, Albert},
+doi = {10.4121/19410146},
+license = {GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007},
+title = {{Python package to test the mixed-mode response of user element subroutines of cohesive zone elements for implementation with Abaqus/CAE}},
+url = {https://github.com/NMudunuru/CzmTestKit.git},
+version = {1.0.0}
+}
+```
+
 # License
 [![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)    
 
