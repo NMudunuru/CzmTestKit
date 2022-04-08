@@ -51,6 +51,14 @@ The code documentation for developers will be made available soon.
 <a id="2">[2]</a> Abedin Nejad , Sobhan (2019) Linking ABAQUS with FORTRAN user manual. DOI:[10.13140/RG.2.2.19391.87206](http://dx.doi.org/10.13140/RG.2.2.19391.87206)
 
 # License
-[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
+[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)    
+
+Copyright (C) 2021  Nanditha Mudunuru
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
 
 **Authors: [Nanditha Mudunuru](https://in.linkedin.com/in/nanditha-mudunuru-952296104)  |  [Miguel Bessa](https://scholar.google.com/citations?user=jzDs_6sAAAAJ&hl=en)  |  [Albert Turon](https://scholar.google.com/citations?user=0ylSC9wAAAAJ&hl=en)**
