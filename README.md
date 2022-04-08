@@ -44,7 +44,7 @@ The code documentation for developers will be made available soon.
 
 **Contributions are welcome.** To ensure a safe environment, all contributors are expected to adhere to the [contributor guidelines](https://czmtestkit.readthedocs.io/en/latest/contGuide.html) and the code of conduct. 
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) 
 
 
 # References
@@ -72,7 +72,7 @@ version = {1.0.0}
 ```
 
 # License
-[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)    
+[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)    
 
 Copyright (C) 2021  Nanditha Mudunuru
 
