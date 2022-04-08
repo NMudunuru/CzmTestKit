@@ -1,8 +1,13 @@
-Contributers are to kindly stick to the following guidelines and code of conduct to avoid conflicts and misunderstandings during the collaboration process.
+**Code of conduct**
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) 
+
+Contributers are to kindly stick to the following guidelines and the contributor covenant code of conduct to avoid conflicts and misunderstandings during the collaboration process.
+
 
 ## Installation
 
-### Setup for Package Developers
+### Setup for developing the package
 
 Ensure that the prerequists from the [documentation](https://czmtestkit.readthedocs.io/en/latest/packageRead.html) have been satisfied. 
 
@@ -14,7 +19,7 @@ Ensure that the prerequists from the [documentation](https://czmtestkit.readthed
 
 3. Create conda environment `CzmTestKit` with dependencies required for the package. This can be done using the `environment.yml` file in the `CzmTestKit` directory. 
 
-```bash
+```
 $ cd <path to the package environment file for example C:\Users\User\Desktop\CzmTestKit>
 $ conda env create -f environment.yml
 ```
@@ -33,7 +38,7 @@ $ python -m pip install .
 
 6. Edit the source code, reinstall the package and test the functionality. Repeat steps 4, 5 to reinstall the package.
 
-### Setup for documentation testing
+### Setup for testing the documentation
 
 The `CzmTestKit` [documentation](https://czmtestkit.readthedocs.io/en/latest/index.html) is hosted by `readthedocs`, where the changes merged to `main` branch of the [git repository](https://github.com/NMudunuru/CzmTestKit.git) are automatically reflected in the published documentation. 
 However, it is necessary to locally test the documentation before pushing to the `main`. Use the following steps to locally build and test the documentation.
@@ -44,7 +49,7 @@ However, it is necessary to locally test the documentation before pushing to the
 
 2. Create conda environment `docs` with dependencies required for the documentation. This can be done using the `environment.yml` file in the `docs` subdirectory of the `CzmTestKit` directory.
 
-```bash
+```
 $ cd <path to the docs environment file for example C:\Users\User\Desktop\CzmTestKit\docs>
 $ conda env create -f environment.yml
 ```
