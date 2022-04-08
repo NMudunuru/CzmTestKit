@@ -27,7 +27,9 @@ Use the following command to upgrade the package.
 ``` python -m pip install --upgrade czmtestkit ```
 
 
-# Software description v1.0.0
+# Software description 
+
+## v1.0.0
 
 Overview of current functionality of the package:
 
@@ -44,7 +46,7 @@ The code documentation for developers will be made available soon.
 
 **Contributions are welcome.** To ensure a safe environment, all contributors are expected to adhere to the [contributor guidelines](https://czmtestkit.readthedocs.io/en/latest/contGuide.html) and the code of conduct. 
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/NMudunuru/CzmTestKit/blob/main/CODE_OF_CONDUCT.md) 
 
 
 # References
@@ -72,7 +74,7 @@ version = {1.0.0}
 ```
 
 # License
-[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)    
+[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/NMudunuru/CzmTestKit/blob/main/LICENSE)    
 
 Copyright (C) 2021  Nanditha Mudunuru
 
