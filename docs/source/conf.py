@@ -80,5 +80,5 @@ html_sidebars = { '**': ['globaltoc.html','localtoc.html', 'relations.html', 'so
 
 # -- Excluding abaqus modules from documentation -------------------------------------------------
 autodoc_mock_imports = ["abaqus", "abaqusConstants","material","section","part","assembly",
-						"step", "interaction","mesh","load","job","pandas","numpy","matplotlib",
-						"scipy"]
+						"step", "interaction","mesh","load","job","optimization","sketch",
+						"odbAccess", "connectorBehavior","pandas","numpy","matplotlib","scipy"]

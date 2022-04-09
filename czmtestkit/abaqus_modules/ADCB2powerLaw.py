@@ -22,7 +22,7 @@ def ADCB2powerLaw(dict):
     #JobID, Length, tTop, tBot, tCz, Crack, DensityBulk, E, DensityCz, StiffnessCz, GcNormal, GcShear, gFailureNormal, gFailureShear, powerLaw, MeshCrack, MeshX, MeshZ, Displacement, nCpu, nGpu, userSub={}, submit=True
     print('Running the script')
     print(dict)
-    for k in dict.keys(): exec "{0}=dict[\'{0}\']".format(k)
+    for k in dict.keys(): exec("{0} = dict[\'{0}\']".format(k))
     NominalNormal = 2*GcNormal/gFailureNormal
     NominalShear = 2*GcShear/gFailureShear
     tTot = tTop + tBot + tCz

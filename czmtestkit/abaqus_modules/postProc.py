@@ -28,23 +28,23 @@ def historyOutput(dict):
     OutKey = []
     Set = Database.steps['Step-1'].historyRegions.keys()
     for s in Set:
-    	Out =  Database.steps['Step-1'].historyRegions[s].historyOutputs.keys()
-    	for o in Out:
-    	    SetKey.append(s)
-    	    OutKey.append(o)
+        Out =  Database.steps['Step-1'].historyRegions[s].historyOutputs.keys()
+        for o in Out:
+            SetKey.append(s)
+            OutKey.append(o)
     with open(Name+'.csv', mode='w') as file:
         writer = csv.writer(file)
         for i in range(len(SetKey)):
-    		Out_dat = []
-    		for j in StepKey:
-                	Out_raw = Database.steps[j].historyRegions[SetKey[i]].historyOutputs[OutKey[i]].data
-                	Out = [float(row[1]) for row in Out_raw]
-    			Out_dat.extend(Out)
-                Out = [SetKey[i]]
-                Out.append(OutKey[i][:-1])
-                Out.append(OutKey[i][-1])
-                Out = Out + Out_dat
-                Output.append(Out)
+            Out_dat = []
+            for j in StepKey:
+                Out_raw = Database.steps[j].historyRegions[SetKey[i]].historyOutputs[OutKey[i]].data
+                Out = [float(row[1]) for row in Out_raw]
+                Out_dat.extend(Out)
+            Out = [SetKey[i]]
+            Out.append(OutKey[i][:-1])
+            Out.append(OutKey[i][-1])
+            Out = Out + Out_dat
+            Output.append(Out)
         for j in range(len(Output[0])):
             row = []
             for i in range(len(Output)):

@@ -24,7 +24,7 @@ def ADCB(dict):
     """
     print('Running the script')
     print(dict)
-    for k in dict.keys(): exec "{0}=dict[\'{0}\']".format(k)
+    for k in dict.keys(): exec("{0} = dict[\'{0}\']".format(k))
     NominalNormal = 2*GcNormal/gFailureNormal
     NominalShear = 2*GcShear/gFailureShear
     tTot = tTop + tBot + tCz
