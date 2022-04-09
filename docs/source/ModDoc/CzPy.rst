@@ -1,5 +1,5 @@
-Module for use with CZ environment
-==================================
+Module for use With Python Environment
+========================================
 
 .. automodule:: czmtestkit.py_modules
    :imported-members:

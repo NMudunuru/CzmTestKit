@@ -44,7 +44,7 @@ Examples are avaiable in the *[documentation](https://czmtestkit.readthedocs.io/
 The code documentation for developers will be made available soon.
 
 
-**Contributions are welcome.** To ensure a safe environment, all contributors are expected to adhere to the [contributor guidelines](https://czmtestkit.readthedocs.io/en/latest/contGuide.html) and the code of conduct. 
+**Contributions are welcome.** To ensure a safe environment, all contributors are expected to adhere to the [contributor guidelines](https://czmtestkit.readthedocs.io/en/latest/contGuide.html) and the contributor covenant code of conduct.
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/NMudunuru/CzmTestKit/blob/main/CODE_OF_CONDUCT.md) 
 
@@ -55,6 +55,8 @@ The code documentation for developers will be made available soon.
 <a id="2">[2]</a> Abedin Nejad , Sobhan (2019) Linking ABAQUS with FORTRAN user manual. DOI:[10.13140/RG.2.2.19391.87206](http://dx.doi.org/10.13140/RG.2.2.19391.87206)
 
 # Cite
+
+If you use this software, please cite it as below.
 
 **APA**
 ```
@@ -74,7 +76,7 @@ version = {1.0.0}
 ```
 
 # License
-[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/NMudunuru/CzmTestKit/blob/main/LICENSE)    
+[![License : GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/NMudunuru/CzmTestKit/blob/main/LICENSE)
 
 Copyright (C) 2021  Nanditha Mudunuru
 

@@ -1,7 +1,5 @@
-Module for use with abaqus cae
-=============================== 
-
-Run the abaqus python script based modules using the ``czmtestkit.py_modules.abqFun()`` function.
+Abaqus Python Modules for use With Abaqus/CAE
+============================================== 
 
 .. automodule:: czmtestkit.abaqus_modules
    :imported-members:
