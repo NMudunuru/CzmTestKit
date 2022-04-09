@@ -51,29 +51,28 @@ Ensure that the prerequists from the [documentation](https://czmtestkit.readthed
 
 ##### Windows 10
 
-1. Fork the git repository [https://github.com/NMudunuru/CzmTestKit.git](https://github.com/NMudunuru/CzmTestKit.git) of the package. The link to the git repository will take you to the following page. Use the Fork option highlighted below to add a copy of the repository to your git hub account.
-
-    ![Github Fork Button](https://github.com/NMudunuru/CzmTestKit/blob/main/imgs/Fork.png)
-1. Setup the `CzmTestKit` repository on your local machine by cloning your fork repository.
+1. Fork the git repository [https://github.com/NMudunuru/CzmTestKit.git](https://github.com/NMudunuru/CzmTestKit.git) of the package. The link to the git repository will take you to the following page. Use the Fork option highlighted below to add a copy of the repository to your git hub account
+    ![Github Fork Button](imgs/Fork.png)
+2. Setup the `CzmTestKit` repository on your local machine by cloning your fork repository.
     ```
     $ git clone <url of your fork>
     ```
-1. Create conda environment `CzmTestKit` with dependencies required for the package. This can be done using the `environment.yml` file in the `CzmTestKit` directory.
+3. Create conda environment `CzmTestKit` with dependencies required for the package. This can be done using the `environment.yml` file in the `CzmTestKit` directory.
     ```
     $ cd <path to the package environment file for example C:\Users\User\Desktop\CzmTestKit>
     $ conda env create -f environment.yml
     ```
-1. Activate the environment.
+4. Activate the environment.
     ```bash
     $ conda activate CzmTestKit
     ```
-1. Install the source code of the package. Do not use `$ pip install CzmTestKit` here, as this will install the distributed PyPI version of the package. The goal here is to install the package from the local package for testing. Therefore, use the following command from the local  `CzmTestKit` directory.
+5. Install the source code of the package. Do not use `$ pip install CzmTestKit` here, as this will install the distributed PyPI version of the package. The goal here is to install the package from the local package for testing. Therefore, use the following command from the local  `CzmTestKit` directory.
     ```bash
     $ python -m pip install .
     ```
-1. Edit the source code and reinstall the package. Repeat steps 4, 5 to reinstall the package. See the [source code documentation](https://czmtestkit.readthedocs.io/en/latest/CodDoc.html) for guidelines on current code functionality and structure. If needed, contact the primary authors to guide you through the code.
-1. Test the changes and repeat the previous step if further changes are necessary.
-1. When you are ready, update the documentation and push the changes to your remote. Then, send a pull request to the main package repository in [https://github.com/NMudunuru/CzmTestKit.git](https://github.com/NMudunuru/CzmTestKit.git), e.g. following the instructions [here](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Use the following checklist to ensure that the changes are clear and well documented.
+6. Edit the source code and reinstall the package. Repeat steps 4, 5 to reinstall the package. See the [source code documentation](https://czmtestkit.readthedocs.io/en/latest/CodDoc.html) for guidelines on current code functionality and structure. If needed, contact the primary authors to guide you through the code.
+7. Test the changes and repeat the previous step if further changes are necessary.
+8. When you are ready, update the documentation and push the changes to your remote. Then, send a pull request to the main package repository in [https://github.com/NMudunuru/CzmTestKit.git](https://github.com/NMudunuru/CzmTestKit.git), e.g. following the instructions [here](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Use the following checklist to ensure that the changes are clear and well documented.
    ```
     - [] Update the following meta data in the docstrings of the module source code:
         - [] Date of edit or update.
