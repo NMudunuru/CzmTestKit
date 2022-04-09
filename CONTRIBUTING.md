@@ -47,11 +47,11 @@ Following sections are specific instruction to guide you in executing steps 3 to
 
 #### Setup for developing the package
 
-Ensure that the prerequists from the [documentation](https://czmtestkit.readthedocs.io/en/latest/packageRead.html) have been satisfied. 
+Ensure that the prerequists from the [documentation](https://czmtestkit.readthedocs.io/en/latest/packageRead.html) have been satisfied.
 
 ##### Windows 10
 
-1. Fork the git repository [https://github.com/NMudunuru/CzmTestKit.git](https://github.com/NMudunuru/CzmTestKit.git) of the package. The link to the git repository will take you to the following page. Use the Fork option highlighted below to add a copy of the repository to your git hub account
+1. Fork the git repository [https://github.com/NMudunuru/CzmTestKit.git](https://github.com/NMudunuru/CzmTestKit.git) of the package. The link to the git repository will take you to the following page. Use the Fork option highlighted below to add a copy of the repository to your git hub account.
     ![Github Fork Button](imgs/Fork.png)
 2. Setup the `CzmTestKit` repository on your local machine by cloning your fork repository.
     ```
