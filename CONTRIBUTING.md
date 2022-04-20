@@ -105,15 +105,10 @@ However, it is necessary to locally test the documentation before pushing to the
     ```bash
     $ conda activate docs
     ```
-1. Install the source code of the package. Do not use `$ pip install CzmTestKit` here, as this will install the distributed PyPI version of the package. The goal here is to install the package from the local package for testing. Therefore, use the following command from the local  `CzmTestKit` directory.
-    ```bash
-    $ cd <path to the package environment file for example C:\Users\User\Desktop\CzmTestKit>
-    $ python -m pip install .
-    ```
 1. From the `docs` subdirectory in `CzmTestKit`, execute the documenation source.
     ```bash
     $ cd <path to the docs environment file for example C:\Users\User\Desktop\CzmTestKit\docs>
     $ make html
     ```
     Executing the documentation source will result in a `build` directory in the `docs` subdirectory with the html files in `docs\build\html` subdirectory, where `docs\build\html\index.html` will be the home page for the documentation.
-1. Repeat steps 2, 3 and 4 as needed till the updates in the documentation are satisfactory.
+1. Repeat the previous step till the updates in the documentation are satisfactory.

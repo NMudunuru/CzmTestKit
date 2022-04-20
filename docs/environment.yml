@@ -9,6 +9,9 @@ dependencies:
   - nbsphinx
   - nbsphinx-link
   - docutils
+  - sphinx-automodapi
+  - sphinx-panels
+  - sphinx-tabs
   - pip
   - pip:
     - sphinx_rtd_theme
