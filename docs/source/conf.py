@@ -72,6 +72,9 @@ exclude_patterns = ['_build', '_templates','README.md']#,'**.ipynb_checkpoints']
 
 #source_suffix = ['.rst', '.md']
 
+# Cross ref tables and images by number
+numfig = True
+
 
 # -- Options for HTML output -------------------------------------------------
 

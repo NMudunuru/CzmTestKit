@@ -45,7 +45,7 @@ If you think you may have found a bug:
 
 Following sections are specific instruction to guide you in executing steps 3 to 8 of the list above.
 
-#### Setup for developing the package
+#### Steps for developing the package
 
 Ensure that the prerequists from the [documentation](https://czmtestkit.readthedocs.io/en/latest/packageRead.html) have been satisfied.
 
@@ -88,7 +88,7 @@ Ensure that the prerequists from the [documentation](https://czmtestkit.readthed
 
 **If you feel like you have a valuable contribution to make, but you don't know how to complete some of the items in this checklist such as writing or running tests or updating the documentation: don't let this discourage you from making the pull request; we can help you! Just go ahead and submit the pull request, but keep in mind that you might be asked to make additional commits to your pull request.**
 
-#### Setup for testing the documentation
+#### Steps for testing the documentation
 
 The package [documentation](https://czmtestkit.readthedocs.io/en/latest/index.html) is hosted by `readthedocs`, where the changes merged to `main` branch of the [git repository](https://github.com/NMudunuru/CzmTestKit.git) are automatically reflected in the published documentation.
 However, it is necessary to locally test the documentation before pushing to the `main`. Use the following steps to locally build and test the documentation.

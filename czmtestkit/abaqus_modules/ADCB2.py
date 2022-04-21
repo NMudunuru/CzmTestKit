@@ -19,7 +19,191 @@ import load
 import job
 
 def ADCB2(dict):
-    #JobID, Length, tTop, tBot, tCz, Crack, DensityBulk, E, DensityCz, StiffnessCz, GcNormal, GcShear, gFailureNormal, gFailureShear, bkPower, MeshCrack, MeshX, MeshZ, Displacement, nCpu, nGpu, userSub={}, submit=True
+    """
+
+	**Create and submit Asymmetric Double Cantilever Beam (ADCB) test with plain strain boundary conditions using Abaqus/CAE.**
+    
+    .. Note:: The function :func:`ADCB` is only different from :func:`ADCB2` in the material definition of the bulk. While :func:`ADCB` defines both top and bottom adherands or plies in :numref:`ADCBscheme2` with the same engineering constants, :func:`ADCB2` defines these regions separately.
+    
+    The ADCB specimen with geometry from :numref:`ADCBscheme2` is generated with unit width (:math:`B = 1`). The mixed-mode damage is modelled using the `BK criteria`_
+    Additionally, along with boundary conditions from :numref:`ADCBscheme2`, the translation along `E2` of all the nodes on faces perpendicular to `E2` are fixed to replicate plain-strain boundary conditions.
+    Further, the displacement on the load edge is applied in an implicit dynamic step with nonlinear geometry option turned on.
+
+	:Parameters:
+    
+        **dict** (`dict`):
+
+            :'JobID': name of the ``.odb`` file.
+
+            :'Length': Length of the specimen :math:`2L`. 
+            
+            :'tTop': thickness of the top adherand/ply :math:`h_u`.
+            
+            :'tBot': thickness of the bottom adherand/ply :math:`h_l`.
+            
+            :'tCz': thickness of the cohesive zone :math:`t`.
+            
+            :'Crack': Crack length :math:`a_0`.
+            
+            :'DensityBulkBot': Density of the bottom adherand/ply.
+            
+            :'DensityBulkTop': Density of the top adherand/ply.
+            
+            :'EBot': Tuple of engineering constants for the elastic behaviour of the bottom adherand/ply.
+
+                .. code-block:: python
+
+                    (E1,E2,E3,ν12,ν13,ν23,G12,G13,G23)
+            
+            :'ETot': Tuple of engineering constants for the elastic behaviour of the top adherand/ply.
+
+                .. code-block:: python
+
+                    (E1,E2,E3,ν12,ν13,ν23,G12,G13,G23)
+            
+            :'DensityCz': Density of the cohesive zone
+            
+            :'StiffnessCz': Element stiffness or penality stiffness :math:`K`.
+            
+            :'GcNormal': Fracture toughness in opening mode :math:`G_{C_{I}}`. See :numref:`BiLinTSLscheme2`
+            
+            :'GcShear': Fracture toughness in shear mode :math:`G_{C_{sh}}`. See :numref:`BiLinTSLscheme2` 
+            
+            :'gFailureNormal': Final or failure displacement gap in opening mode :math:`\Delta_{I}^f`. See :numref:`BiLinTSLscheme2`
+            
+            :'gFailureShear': Final or failure displacement gap in shear mode :math:`\Delta_{sh}^f`. See :numref:`BiLinTSLscheme2` 
+            
+            :'bkPower': :math:`\eta` of the `BK criteria`_.
+            
+            :'MeshCrack': Mesh size of edges along direction `E1` in the crack.
+            
+            :'MeshX': Mesh size of edges along direction `E1` ahead of crack tip.
+            
+            :'MeshZ': Mesh size of edges along direction `E3`. 
+            
+            :'Displacement': Magnitude of the displacement to be applied along `U3` at the load edge.
+            
+            :'nCpu': Number of CPUs to be used when submitting the job.
+            
+            :'nGpu': Number of GPUs to be used when submitting the job.
+            
+            :'userSub': Dictionary with user subroutine specifications
+
+                :'type': ``'None'``: Energy based linear softening traction separation law as implemented by Abaqus/CAE is used for cohesive elements. 
+                    
+                    ``'UEL'``: Redefines the cohesive elements to user elements using :func:`ReDefCE` and submits with the subroutine from ``dict['userSub']['path']``.
+                        
+                        .. code-block:: python
+
+                            ReDefCE(JobID+'.inp', 
+                                [StiffnessCz, 
+                                    NominalNormal, 
+                                    NominalShear, 
+                                    GcNormal, 
+                                    GcShear, 
+                                    bkPower],
+                                userSub['intProp'])
+
+                :'path': Path to the fortran based user subroutine (``.for`` file).
+
+                :'intProp': `int` list of element properties.
+            
+            :'submit': ``True``: the Abaqus/CAE job is submitted.
+            
+                ``False``: the input file ``.inp`` is generated but the job is not submitted.
+
+    .. Warning:: The input parameters should be consistent in their units of measurement. Following are some commonly used groups of units in engineering:
+
+        .. csv-table:: Consistent set of units `[4]`_.
+            :align: center
+            :header: MASS, LENGTH, TIME, FORCE, STRESS, ENERGY
+            :widths: 1,1,1,1,1,1
+
+            kg, m, s, N, Pa, J
+            kg, mm, ms, kN, GPa, kN-mm
+            g, mm, ms, N, MPa, N-mm
+
+
+
+    .. _ADCBscheme2:
+    
+    .. figure:: /imgs/ADCB.png
+        :width: 500
+        :alt: ADCB schematic.
+        :align: center
+
+        **ADCB schematic** `[1]`_. 
+        
+        `Here, the translation degrees of freedom parallel to the axis of the `blue` cones are fixed. Additionally, the shaded region represents the cohesive zone interface while the unshaded region represents the bulk adherands or plies.`
+
+    .. _BiLinTSLscheme2:
+    
+    .. figure:: /imgs/Bilinear.png
+        :width: 300
+        :alt: Schematic of the Bilinear Traction Separation Law.
+        :align: center
+
+        **Bilinear Traction Separation Law** or the linear softening law `[2]`_.
+
+        `Interfaces tend to have different properties for opening (mode-I) and shear modes (mode-II and mode-III) in` :numref:`FractureModes2` `, resulting in different traction separation laws represented above using subscripts `I` for opening mode and `sh` for shear modes for the parameters.`
+
+    .. _FractureModes2:
+    
+    .. figure:: /imgs/FractureModes.jpg
+        :width: 500
+        :alt: Fracture Modes.
+        :align: center
+
+        **Fracture Modes** `[3]`_.
+
+    .. Tip:: Analytical results for this test using  Timoshenko beam theory and Castigliano theorem as described in appendix B of the master thesis `[1]`_ can be obtained using methods of the :class:`czmtestkit.py_modules.ADCB` class. 
+
+
+    **References:**
+
+    .. _[1]: 
+
+        1) Mudunuru, N. (2022, March 30). Finite Element Model For Interfaces In Compatibilized Polymer Blends. TU Delft Education Repositories. Retrieved on April 21, 2022, from `http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373 <http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373>`_
+
+    .. _[2]: 
+
+        2) Turon, A., Camanho, P., Costa, J., & Dávila, C. (2006). A damage model for the simulation of delamination in advanced composites under variable-mode loading. Mechanics of Materials, 38(11), 1072–1089. https://doi.org/10.1016/j.mechmat.2005.10.003
+
+    .. _[3]:
+
+        3) Oterkus, E., Diyaroglu, C., de Meo, D., & Allegri, G. (2016). Fracture modes, damage tolerance and failure mitigation in marine composites. Marine Applications of Advanced Fibre-Reinforced Composites, 79–102. https://doi.org/10.1016/b978-1-78242-250-1.00004-1
+
+    .. _[4]:
+
+        4) LS-Dyna. (n.d.). Consistent units. Retrieved April 21, 2022, from https://www.dynasupport.com/howtos/general/consistent-units
+
+    .. _BK criteria:
+
+        5) Benzeggagh, M., & Kenane, M. (1996). Measurement of mixed-mode delamination fracture toughness of unidirectional glass/epoxy composites with mixed-mode bending apparatus. Composites Science and Technology, 56(4), 439–449. https://doi.org/10.1016/0266-3538(96)00005-x
+
+    .. admonition:: Metadata
+
+        .. tabbed:: Environment
+            
+            :badge:`Abaqus/CAE,badge-primary`
+
+        .. tabbed:: Version
+            
+            v1.0.0
+
+        .. tabbed:: Date
+            
+            2021-12-29
+
+        .. tabbed:: Authors
+            
+            .. tabbed:: Nanditha Mudunuru
+
+                Contribution: v1.0.0
+
+                Email: nanditha.mudunuru@gmail.com
+
+    """
     print('Running the script')
     print(dict)
     for k in dict.keys(): exec("{0} = dict[\'{0}\']".format(k))
