@@ -4,7 +4,9 @@ channels:
   - defaults
 dependencies:
   - ipykernel
+  - numpy
   - sphinx
+  - Jinja2<3.1
   - myst-parser
   - nbsphinx
   - nbsphinx-link

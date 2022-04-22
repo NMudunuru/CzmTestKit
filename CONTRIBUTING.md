@@ -45,6 +45,8 @@ If you think you may have found a bug:
 
 Following sections are specific instruction to guide you in executing steps 3 to 8 of the list above.
 
+## Steps for Contributing
+
 #### Steps for developing the package
 
 Ensure that the prerequists from the [documentation](https://czmtestkit.readthedocs.io/en/latest/packageRead.html) have been satisfied.

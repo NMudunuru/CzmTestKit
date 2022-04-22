@@ -9,6 +9,39 @@ import numpy as np
     
 # Second moments of area for rectangular section
 def Inertia(b,h):
+    """
+
+	**Second moment of area along the out of plane through the mid point of diagonal for a rectangular crossection.**
+
+    :Parameters:
+
+        **b** (`float`): crossection width (length along the first axis of the global coordinate system)
+
+        **h** (`float`): crossection height (length along the second axis of the global coordinate system)
+
+    .. admonition:: Metadata
+
+        .. tabbed:: Environment
+            
+            :badge:`Abaqus/CAE,badge-primary`
+
+        .. tabbed:: Version
+            
+            v1.0.0
+
+        .. tabbed:: Date
+            
+            2022-01-18
+
+        .. tabbed:: Authors
+            
+            .. tabbed:: Nanditha Mudunuru
+
+                Contribution: v1.0.0
+
+                Email: nanditha.mudunuru@gmail.com
+
+    """
     return b*(h**3)/12
 
 
