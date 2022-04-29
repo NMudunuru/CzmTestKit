@@ -2,7 +2,7 @@ Content
 ===================================
 
 .. toctree::
-   :maxdepth: 5 
+   :maxdepth: 2
    :name: MasterToc
 	
 	Introduction <packageRead.rst>
@@ -10,9 +10,6 @@ Content
 	Examples <TestCase.rst>
 	
 	Guidelines for developers <contGuide.rst>
-	
-	Source code documentation <CodDoc.rst>
-
 
 Indices and tables
 ==================

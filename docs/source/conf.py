@@ -12,7 +12,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../czmtestkit'))
+sys.path.insert(0, os.path.abspath('../../'))
 sys.path.insert(0, os.path.abspath('../../Examples'))
 
 
@@ -38,8 +38,18 @@ extensions = ["nbsphinx",
 	'sphinx.ext.autosummary', 
 	'sphinx.ext.napoleon',
     'sphinx.ext.autosectionlabel',
+	'sphinx_automodapi.automodapi',
+	'sphinx_automodapi.smart_resolver',
+	'sphinx_panels',
+	'sphinx_tabs.tabs',
 	"myst_parser",
 	]
+
+#sphinx_tabs
+sphinx_tabs_valid_builders = ['linkcheck']
+
+# Automodapi
+numpydoc_show_class_members = False
 
 # Run the notebooks in advance.
 nbsphinx_execute = 'never'
@@ -62,13 +72,16 @@ exclude_patterns = ['_build', '_templates','README.md']#,'**.ipynb_checkpoints']
 
 #source_suffix = ['.rst', '.md']
 
+# Cross ref tables and images by number
+numfig = True
+
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'bizstyle'
+html_theme = 'sphinx_rtd_theme' #'bizstyle' 
 html_theme_options = {}
 html_sidebars = { '**': ['globaltoc.html','localtoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'] }
 
@@ -82,3 +95,7 @@ html_sidebars = { '**': ['globaltoc.html','localtoc.html', 'relations.html', 'so
 autodoc_mock_imports = ["abaqus", "abaqusConstants","material","section","part","assembly",
 						"step", "interaction","mesh","load","job","optimization","sketch",
 						"odbAccess", "connectorBehavior","pandas","numpy","matplotlib","scipy"]
+
+# Font awesome for symbols
+html_css_files = ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"]
+panels_add_fontawesome_latex = True

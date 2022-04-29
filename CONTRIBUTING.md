@@ -45,7 +45,9 @@ If you think you may have found a bug:
 
 Following sections are specific instruction to guide you in executing steps 3 to 8 of the list above.
 
-#### Setup for developing the package
+## Steps for Contributing
+
+#### Steps for developing the package
 
 Ensure that the prerequists from the [documentation](https://czmtestkit.readthedocs.io/en/latest/packageRead.html) have been satisfied.
 
@@ -68,7 +70,7 @@ Ensure that the prerequists from the [documentation](https://czmtestkit.readthed
     ```
 5. Install the source code of the package. Do not use `$ pip install CzmTestKit` here, as this will install the distributed PyPI version of the package. The goal here is to install the package from the local package for testing. Therefore, use the following command from the local  `CzmTestKit` directory.
     ```bash
-    $ python -m pip install .
+    $ pip install -e .
     ```
 6. Edit the source code and reinstall the package. Repeat steps 4, 5 to reinstall the package. See the [source code documentation](https://czmtestkit.readthedocs.io/en/latest/CodDoc.html) for guidelines on current code functionality and structure. If needed, contact the primary authors to guide you through the code.
 7. Test the changes and repeat the previous step if further changes are necessary.
@@ -88,7 +90,7 @@ Ensure that the prerequists from the [documentation](https://czmtestkit.readthed
 
 **If you feel like you have a valuable contribution to make, but you don't know how to complete some of the items in this checklist such as writing or running tests or updating the documentation: don't let this discourage you from making the pull request; we can help you! Just go ahead and submit the pull request, but keep in mind that you might be asked to make additional commits to your pull request.**
 
-#### Setup for testing the documentation
+#### Steps for testing the documentation
 
 The package [documentation](https://czmtestkit.readthedocs.io/en/latest/index.html) is hosted by `readthedocs`, where the changes merged to `main` branch of the [git repository](https://github.com/NMudunuru/CzmTestKit.git) are automatically reflected in the published documentation.
 However, it is necessary to locally test the documentation before pushing to the `main`. Use the following steps to locally build and test the documentation.
@@ -105,15 +107,10 @@ However, it is necessary to locally test the documentation before pushing to the
     ```bash
     $ conda activate docs
     ```
-1. Install the source code of the package. Do not use `$ pip install CzmTestKit` here, as this will install the distributed PyPI version of the package. The goal here is to install the package from the local package for testing. Therefore, use the following command from the local  `CzmTestKit` directory.
-    ```bash
-    $ cd <path to the package environment file for example C:\Users\User\Desktop\CzmTestKit>
-    $ python -m pip install .
-    ```
 1. From the `docs` subdirectory in `CzmTestKit`, execute the documenation source.
     ```bash
     $ cd <path to the docs environment file for example C:\Users\User\Desktop\CzmTestKit\docs>
     $ make html
     ```
     Executing the documentation source will result in a `build` directory in the `docs` subdirectory with the html files in `docs\build\html` subdirectory, where `docs\build\html\index.html` will be the home page for the documentation.
-1. Repeat steps 2, 3 and 4 as needed till the updates in the documentation are satisfactory.
+1. Repeat the previous step till the updates in the documentation are satisfactory.

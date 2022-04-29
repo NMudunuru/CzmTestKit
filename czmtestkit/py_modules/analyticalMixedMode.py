@@ -9,10 +9,77 @@ import numpy as np
     
 # Second moments of area for rectangular section
 def Inertia(b,h):
+    """
+
+	**Second moment of area along the out of plane through the mid point of diagonal for a rectangular crossection.**
+
+    :Parameters:
+
+        **b** (`float`): crossection width (length along the first axis of the global coordinate system)
+
+        **h** (`float`): crossection height (length along the second axis of the global coordinate system)
+
+    .. admonition:: Metadata
+
+        .. tabbed:: Environment
+            
+            :badge:`Abaqus/CAE,badge-primary`
+
+        .. tabbed:: Version
+            
+            v1.0.0
+
+        .. tabbed:: Date
+            
+            2022-01-18
+
+        .. tabbed:: Authors
+            
+            .. tabbed:: Nanditha Mudunuru
+
+                Contribution: v1.0.0
+
+                Email: nanditha.mudunuru@gmail.com
+
+    """
     return b*(h**3)/12
 
 
 class Model(object):
+    """
+
+	**Parent class for analytical models of standardized tests described in appendix B of the master thesis** `[1]`_.
+
+
+    **References:**
+
+    .. _[1]: 
+
+        1) Mudunuru, N. (2022, March 30). Finite Element Model For Interfaces In Compatibilized Polymer Blends. TU Delft Education Repositories. Retrieved on April 21, 2022, from `http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373 <http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373>`_
+
+    .. admonition:: Metadata
+
+        .. tabbed:: Environment
+            
+            :badge:`Abaqus/CAE,badge-primary`
+
+        .. tabbed:: Version
+            
+            v1.0.0
+
+        .. tabbed:: Date
+            
+            2022-01-18
+
+        .. tabbed:: Authors
+            
+            .. tabbed:: Nanditha Mudunuru
+
+                Contribution: v1.0.0
+
+                Email: nanditha.mudunuru@gmail.com
+
+    """
     def __init__(self):
         # Geometry
         self.halfLength = 50 # Specimen half length
@@ -28,6 +95,53 @@ class Model(object):
         
     # Initialize
     def setup(self, data=None):   
+        """
+        **Setup class attributes corresponding to specimen geometry and properties.**
+
+        :Parameters:
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties.
+                
+                Only necessary if :meth:`.setup` method of a child class has not been previously executed.
+
+                :'JobID': Name of the job.
+
+                :'Length': Length of the specimen :math:`2L`. 
+
+                :'Width': Width of the specimen :math:`B`. 
+                
+                :'tTop': Thickness of the top adherand/ply :math:`h_u`.
+                
+                :'tBot': Thickness of the bottom adherand/ply :math:`h_l`.
+                
+                :'tCz': Thickness of the cohesive zone :math:`t`.
+                
+                :'Crack': Crack length :math:`a_0`.
+                
+                :'E' or 'ETop': Tuple of engineering constants for the elastic behaviour of the top adherand/ply.
+
+                    .. code-block:: python
+
+                        (E1,E2,E3,ν12,ν13,ν23,G12,G13,G23)
+
+        .. Warning:: The input parameters should be consistent in their units of measurement. Following are some commonly used groups of units in engineering:
+
+            .. csv-table:: Consistent set of units `[1]`_.
+                :align: center
+                :header: MASS, LENGTH, TIME, FORCE, STRESS, ENERGY
+                :widths: 1,1,1,1,1,1
+
+                kg, m, s, N, Pa, J
+                kg, mm, ms, kN, GPa, kN-mm
+                g, mm, ms, N, MPa, N-mm  
+
+        **References:**
+
+        .. _[2]:
+
+            1) LS-Dyna. (n.d.). Consistent units. Retrieved April 21, 2022, from https://www.dynasupport.com/howtos/general/consistent-units           
+
+        """
         if data!=None:     
             self.halfLength = data['Length']*0.5 # Specimen half length
             self.width = data['Width'] # Specimen width
@@ -58,6 +172,26 @@ class Model(object):
         
     # Reaction force
     def reactionForce(self, u=None, data=None):  
+        """
+        **Find the reaction force corresponding to open displacements, given the critical fracture toughness (** :math:`G_C` **).**
+
+        :Parameters:
+
+            **u** (`float` or `list`): opening displacement.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs in addition to the following: 
+                
+                :'Displacement': list of opening displacements.
+                
+                :'gT': Fracture toughness.
+
+        .. Note:: If the :meth:`.setup` method of :class:`Model` or one of its child classes has already been executed, pass the displacement to :meth:`.reactionForce` method using the ``u`` argument. 
+            If not, the input dictionary from :meth:`Model.setup` must be passed along with the additional key-value pairs using the ``data`` argument.
+            Either the ``data`` or the ``u`` arguments are required, not both.
+
+        .. Warning:: Can only be used when a child class with methods :meth:`.setup`, :meth:`.crackLength` and :meth:`.compliance` are defined. For example, see :class:`czmtestkit.py_modules.ADCB`, :class:`czmtestkit.py_modules.ASLB` and :class:`czmtestkit.py_modules.ENF` 
+
+        """
         if data!=None:
             u = np.array(data['Displacement'])
         ## stable crack length
@@ -77,6 +211,28 @@ class Model(object):
     
     # Fracture resistance curve    
     def rCurve(self, u=None, P=None, data=None):
+        """
+        **Find the effective fracture resistance (G) and instantaneous crack length, given the reaction force corresponding to open displacements.**
+
+        :Parameters:
+
+            **P** (`float` or `list`): reaction force.
+
+            **u** (`float` or `list`): opening displacement.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs in addition to the following: 
+                
+                :'Displacement': list of opening displacements.
+
+                :'Reaction Force': list of reaction forces.
+
+        .. Note:: If the :meth:`.setup` method of :class:`Model` or one of its child classes has already been executed, pass the displacement and reaction force inputs to :meth:`.rCurve` method using the ``u`` and ``P`` arguments. 
+            If not, the input dictionary from :meth:`Model.setup` must be passed along with the additional key-value pairs using the ``data`` argument.
+            Either ``data`` or the ``P, u`` arguments are required, not both.
+
+        .. Warning:: Can only be used when a child class with methods :meth:`.setup` and :meth:`.resistance` are defined. For example, see :class:`czmtestkit.py_modules.ADCB`, :class:`czmtestkit.py_modules.ASLB` and :class:`czmtestkit.py_modules.ENF` 
+
+        """
         ## setup necessary variables
         if data!=None:
             u = np.array(data['Displacement'])
@@ -105,11 +261,81 @@ class Model(object):
 
     
 class ENF(Model):
+    """
+
+	**Analyse ENF specimens using Timoshenko beam theory and Castigliano theorem as described in appendix B of the master thesis** `[1]`_.
+
+    .. _ADCBscheme2:
+    
+    .. figure:: /imgs/ENF.png
+        :width: 500
+        :alt: ENF schematic.
+        :align: center
+
+        **End Notch Flexure schematic** `[1]`_. 
+        
+        `Here, the translation degrees of freedom parallel to the axis of the `blue` cones are fixed. Additionally, the shaded region represents the cohesive zone interface while the unshaded region represents the bulk adherands or plies.`
+
+    .. Warning:: The input parameters should be consistent in their units of measurement. Following are some commonly used groups of units in engineering:
+
+        .. csv-table:: Consistent set of units `[2]`_.
+            :align: center
+            :header: MASS, LENGTH, TIME, FORCE, STRESS, ENERGY
+            :widths: 1,1,1,1,1,1
+
+            kg, m, s, N, Pa, J
+            kg, mm, ms, kN, GPa, kN-mm
+            g, mm, ms, N, MPa, N-mm
+
+
+    **References:**
+
+    .. _[1]: 
+
+        1) Mudunuru, N. (2022, March 30). Finite Element Model For Interfaces In Compatibilized Polymer Blends. TU Delft Education Repositories. Retrieved on April 21, 2022, from `http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373 <http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373>`_
+
+    .. _[2]:
+
+        2) LS-Dyna. (n.d.). Consistent units. Retrieved April 21, 2022, from https://www.dynasupport.com/howtos/general/consistent-units
+
+    .. admonition:: Metadata
+
+        .. tabbed:: Environment
+            
+            :badge:`Abaqus/CAE,badge-primary`
+
+        .. tabbed:: Version
+            
+            v1.0.0
+
+        .. tabbed:: Date
+            
+            2022-01-18
+
+        .. tabbed:: Authors
+            
+            .. tabbed:: Nanditha Mudunuru
+
+                Contribution: v1.0.0
+
+                Email: nanditha.mudunuru@gmail.com
+
+    """
     def __init__(self):
         self.type = 'ENF' # Test type
         super(ENF, self).__init__()      
     
     def setup(self, data=None):
+        """
+        **Setup equation coefficients.**
+
+        :Parameters:
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`Model.setup` has not been previously executed.
+
+        """
         ## setup necessary variables
         if data!=None:
             super(ENF, self).setup(data) 
@@ -124,6 +350,22 @@ class ENF(Model):
     
     # Compliance
     def compliance(self, a, data=None): 
+        """
+        **Find the compliance for effective crack length.**
+
+        :Parameters:
+
+            **a** (`float` or `numpy array`): effective crack length.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ENF.setup` has not been previously executed.
+
+        :Returns:
+
+            **C** (`float` or `numpy array`): effective compliance from the specimen.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 
@@ -133,10 +375,44 @@ class ENF(Model):
     
     # Fracture resistance
     def resistance(self, P, a, data=None):
+        """
+        **Find the effective fracture resistance (G) given the instantaneous reaction force and effective crack length.**
+
+        :Parameters:
+
+            **P** (`float` or `list`): reaction force.
+
+            **a** (`float` or `list`): effective crack length.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ENF.setup` has not been previously executed.
+
+        :Returns:
+
+            **G** (`float` or `list`): instantaneous fracture resistance or toughness.
+
+        """
         return  9 * P**2 * a**2 / self.P3
     
     # Crack length assuming stable crack growth
     def crackLength(self, u, data=None):
+        """
+        **Find the effective crack length for a given opening displacement at the load end.**
+
+        :Parameters:
+
+            **u** (`float`): opening displacement.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ADCB.setup` has not been previously executed.
+
+        :Returns:
+
+            **a** (`float`): effective crack length.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 
@@ -158,11 +434,84 @@ class ENF(Model):
         return a
     
 class ASLB(Model):
+    """
+
+	**Analyse SLB and ASLB specimens using Timoshenko beam theory and Castigliano theorem as described in appendix B of the master thesis** `[1]`_.
+
+    .. _ADCBscheme2:
+    
+    .. figure:: /imgs/ASLB.png
+        :width: 500
+        :alt: ASLB schematic.
+        :align: center
+
+        **Asymmetric Single Leg Bending schematic** `[1]`_. 
+        
+        `Here, the translation degrees of freedom parallel to the axis of the `blue` cones are fixed. Additionally, the shaded region represents the cohesive zone interface while the unshaded region represents the bulk adherands or plies.`
+
+    .. Warning:: The input parameters should be consistent in their units of measurement. Following are some commonly used groups of units in engineering:
+
+        .. csv-table:: Consistent set of units `[2]`_.
+            :align: center
+            :header: MASS, LENGTH, TIME, FORCE, STRESS, ENERGY
+            :widths: 1,1,1,1,1,1
+
+            kg, m, s, N, Pa, J
+            kg, mm, ms, kN, GPa, kN-mm
+            g, mm, ms, N, MPa, N-mm
+
+
+    .. Tip:: Finite element simulation of this test can be obtained using the :func:`czmtestkit.abaqus_modules.ASLB` or  :func:`czmtestkit.abaqus_modules.ASLB2` functions. 
+
+
+    **References:**
+
+    .. _[1]: 
+
+        1) Mudunuru, N. (2022, March 30). Finite Element Model For Interfaces In Compatibilized Polymer Blends. TU Delft Education Repositories. Retrieved on April 21, 2022, from `http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373 <http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373>`_
+
+    .. _[2]:
+
+        2) LS-Dyna. (n.d.). Consistent units. Retrieved April 21, 2022, from https://www.dynasupport.com/howtos/general/consistent-units
+
+    .. admonition:: Metadata
+
+        .. tabbed:: Environment
+            
+            :badge:`Abaqus/CAE,badge-primary`
+
+        .. tabbed:: Version
+            
+            v1.0.0
+
+        .. tabbed:: Date
+            
+            2022-01-18
+
+        .. tabbed:: Authors
+            
+            .. tabbed:: Nanditha Mudunuru
+
+                Contribution: v1.0.0
+
+                Email: nanditha.mudunuru@gmail.com
+
+    """
     def __init__(self):
         self.type = 'ASLB' # Test type
         super(ASLB, self).__init__()     
     
     def setup(self, data=None):
+        """
+        **Setup equation coefficients.**
+
+        :Parameters:
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`Model.setup` has not been previously executed.
+
+        """
         ## setup necessary variables
         if data!=None:
             super(ASLB, self).setup(data) 
@@ -194,6 +543,22 @@ class ASLB(Model):
     
     # Compliance
     def compliance(self, a, data=None): 
+        """
+        **Find the compliance for effective crack length.**
+
+        :Parameters:
+
+            **a** (`float` or `numpy array`): effective crack length.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ASLB.setup` has not been previously executed.
+
+        :Returns:
+
+            **C** (`float` or `numpy array`): effective compliance from the specimen.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 
@@ -203,6 +568,24 @@ class ASLB(Model):
     
     # Fracture resistance
     def resistance(self, P, a, data=None):
+        """
+        **Find the effective fracture resistance (G) given the instantaneous reaction force and effective crack length.**
+
+        :Parameters:
+
+            **P** (`float` or `list`): reaction force.
+
+            **a** (`float` or `list`): effective crack length.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ASLB.setup` has not been previously executed.
+
+        :Returns:
+
+            **G** (`float` or `list`): instantaneous fracture resistance or toughness.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 
@@ -212,6 +595,22 @@ class ASLB(Model):
 
     # Crack length assuming stable crack growth
     def crackLength(self, u, data=None):
+        """
+        **Find the effective crack length for a given opening displacement at the load end.**
+
+        :Parameters:
+
+            **u** (`float`): opening displacement.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ADCB.setup` has not been previously executed.
+
+        :Returns:
+
+            **a** (`float`): effective crack length.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 
@@ -238,11 +637,84 @@ class ASLB(Model):
     
 
 class ADCB(Model):
+    """
+
+	**Analyse DCB and ADCB specimens using Timoshenko beam theory and Castigliano theorem as described in appendix B of the master thesis** `[1]`_.
+
+    .. _ADCBscheme2:
+    
+    .. figure:: /imgs/ADCB.png
+        :width: 500
+        :alt: ADCB schematic.
+        :align: center
+
+        **Asymmetric Double Cantilever Beam schematic** `[1]`_. 
+        
+        `Here, the translation degrees of freedom parallel to the axis of the `blue` cones are fixed. Additionally, the shaded region represents the cohesive zone interface while the unshaded region represents the bulk adherands or plies.`
+
+    .. Warning:: The input parameters should be consistent in their units of measurement. Following are some commonly used groups of units in engineering:
+
+        .. csv-table:: Consistent set of units `[2]`_.
+            :align: center
+            :header: MASS, LENGTH, TIME, FORCE, STRESS, ENERGY
+            :widths: 1,1,1,1,1,1
+
+            kg, m, s, N, Pa, J
+            kg, mm, ms, kN, GPa, kN-mm
+            g, mm, ms, N, MPa, N-mm
+
+
+    .. Tip:: Finite element simulation of this test can be obtained using the :func:`czmtestkit.abaqus_modules.ADCB` functions. 
+
+
+    **References:**
+
+    .. _[1]: 
+
+        1) Mudunuru, N. (2022, March 30). Finite Element Model For Interfaces In Compatibilized Polymer Blends. TU Delft Education Repositories. Retrieved on April 21, 2022, from `http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373 <http://resolver.tudelft.nl/uuid:88140513-120d-4a34-b893-b84908fe2373>`_
+
+    .. _[2]:
+
+        2) LS-Dyna. (n.d.). Consistent units. Retrieved April 21, 2022, from https://www.dynasupport.com/howtos/general/consistent-units
+
+    .. admonition:: Metadata
+
+        .. tabbed:: Environment
+            
+            :badge:`Abaqus/CAE,badge-primary`
+
+        .. tabbed:: Version
+            
+            v1.0.0
+
+        .. tabbed:: Date
+            
+            2022-01-18
+
+        .. tabbed:: Authors
+            
+            .. tabbed:: Nanditha Mudunuru
+
+                Contribution: v1.0.0
+
+                Email: nanditha.mudunuru@gmail.com
+
+    """
     def __init__(self):
         self.type = 'ADCB' # Test type
         super(ADCB, self).__init__()
     
     def setup(self, data=None):
+        """
+        **Setup equation coefficients.**
+
+        :Parameters:
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`Model.setup` has not been previously executed.
+
+        """
         ## setup necessary variables
         if data!=None:
             super(ADCB, self).setup(data) 
@@ -256,6 +728,22 @@ class ADCB(Model):
     
     # Compliance
     def compliance(self, a, data=None):
+        """
+        **Find the compliance for effective crack length.**
+
+        :Parameters:
+
+            **a** (`float` or `numpy array`): effective crack length.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ADCB.setup` has not been previously executed.
+
+        :Returns:
+
+            **C** (`float` or `numpy array`): effective compliance from the specimen.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 
@@ -265,6 +753,24 @@ class ADCB(Model):
     
     # Fracture resistance
     def resistance(self, P, a, data=None):
+        """
+        **Find the effective fracture resistance (G) given the instantaneous reaction force and effective crack length.**
+
+        :Parameters:
+
+            **P** (`float` or `list`): reaction force.
+
+            **a** (`float` or `list`): effective crack length.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ADCB.setup` has not been previously executed.
+
+        :Returns:
+
+            **G** (`float` or `list`): instantaneous fracture resistance or toughness.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 
@@ -274,6 +780,22 @@ class ADCB(Model):
 
     # Crack length assuming stable crack growth
     def crackLength(self, u, data=None):
+        """
+        **Find the effective crack length for a given opening displacement at the load end.**
+
+        :Parameters:
+
+            **u** (`float`): opening displacement.
+
+            **data** (`dict`) :badge:`Optional,badge-secondary` : Specimen dimensions and properties. See :meth:`Model.setup` for required key-value pairs. 
+                
+                Only necessary if :meth:`ADCB.setup` has not been previously executed.
+
+        :Returns:
+
+            **a** (`float`): effective crack length.
+
+        """
         ## setup necessary variables
         if data!=None:
             self.setup(data) 

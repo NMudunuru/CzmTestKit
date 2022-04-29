@@ -40,7 +40,7 @@ Overview of current functionality of the package:
 1) Read data from converged increments in `.msg` files.
 1) Analytical models for the ADCB, ASLB and end notch flexure tests are also available and can be used to find fracture resistance curves from force-displacement curves or to predict force-displacement curves given the specimen dimensions and fracture properties.
 
-Examples are avaiable in the *[documentation](https://czmtestkit.readthedocs.io/en/latest/)* and the package is on *[PyPI](https://pypi.org/project/czmtestkit/)*. 
+Examples are avaiable in the *[documentation](https://czmtestkit.readthedocs.io/en/latest/TestCase.html)* and the package is on *[PyPI](https://pypi.org/project/czmtestkit/)*. 
 The code documentation for developers will be made available soon.
 
 
