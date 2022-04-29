@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from abaqus import *
 from abaqusConstants import *
 from part import *
@@ -53,13 +54,13 @@ def ASLB2(dict):
 
                 .. code-block:: python
 
-                    (E1,E2,E3,ν12,ν13,ν23,G12,G13,G23)
+                    (E1,E2,E3,:math:`\nu`12,:math:`\nu`13,:math:`\nu`23,G12,G13,G23)
             
             :'ETot': Tuple of engineering constants for the elastic behaviour of the top adherand/ply.
 
                 .. code-block:: python
 
-                    (E1,E2,E3,ν12,ν13,ν23,G12,G13,G23)
+                    (E1,E2,E3,:math:`\nu`12,:math:`\nu`13,:math:`\nu`23,G12,G13,G23)
             
             :'DensityCz': Density of the cohesive zone
             
@@ -167,7 +168,7 @@ def ASLB2(dict):
 
     .. _[2]: 
 
-        2) Turon, A., Camanho, P., Costa, J., & Dávila, C. (2006). A damage model for the simulation of delamination in advanced composites under variable-mode loading. Mechanics of Materials, 38(11), 1072–1089. https://doi.org/10.1016/j.mechmat.2005.10.003
+        2) Turon, A., Camanho, P., Costa, J., & Davila, C. (2006). A damage model for the simulation of delamination in advanced composites under variable-mode loading. Mechanics of Materials, 38(11), 1072–1089. https://doi.org/10.1016/j.mechmat.2005.10.003
 
     .. _[3]:
 

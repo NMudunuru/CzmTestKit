@@ -70,7 +70,7 @@ Ensure that the prerequists from the [documentation](https://czmtestkit.readthed
     ```
 5. Install the source code of the package. Do not use `$ pip install CzmTestKit` here, as this will install the distributed PyPI version of the package. The goal here is to install the package from the local package for testing. Therefore, use the following command from the local  `CzmTestKit` directory.
     ```bash
-    $ python -m pip install .
+    $ pip install -e .
     ```
 6. Edit the source code and reinstall the package. Repeat steps 4, 5 to reinstall the package. See the [source code documentation](https://czmtestkit.readthedocs.io/en/latest/CodDoc.html) for guidelines on current code functionality and structure. If needed, contact the primary authors to guide you through the code.
 7. Test the changes and repeat the previous step if further changes are necessary.
