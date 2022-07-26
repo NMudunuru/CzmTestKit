@@ -8,7 +8,7 @@ Ensure that all the following requirements are satisfied.
 #### Requirements:
 1. Abaqus/CAE is available and can be opened with the following command from the command line.
     ``` abaqus cae ```
-2. Fortran compiler is linked to abaqus. If not, follow instructions by [Abedin Nejad (2019)](#2).
+2. Fortran compiler is linked to abaqus. If not, follow instructions by [Victor Crespo-Cuevas (2021)](#2).
 3. Python and pip have been installed and can be run from the command line. If unsure, follow instructions in [https://packaging.python.org/en/latest/tutorials/installing-packages/](https://packaging.python.org/en/latest/tutorials/installing-packages/) 
 
 
@@ -52,7 +52,7 @@ The code documentation for developers will be made available soon.
 # References
 <a id="1">[1]</a> R. Moreira, M. de Moura, F. Silva, F. Ramírez, and J. Rodrigues. Mixed-mode i + ii fracture characterisation of composite bonded joints. Journal of Adhesion Science and Technology, 34(13):1385–1398, 2020.
 
-<a id="2">[2]</a> Abedin Nejad , Sobhan (2019) Linking ABAQUS with FORTRAN user manual. DOI:[10.13140/RG.2.2.19391.87206](http://dx.doi.org/10.13140/RG.2.2.19391.87206)
+<a id="2">[2]</a> Victor Crespo-Cuevas (2021) Linking ABAQUS 2019/2020 and Intel oneAPI Base Toolkit (FORTRAN Compiler). DOI:[10.13140/RG.2.2.21568.05126](http://dx.doi.org/10.13140/RG.2.2.21568.05126)
 
 # Cite
 
