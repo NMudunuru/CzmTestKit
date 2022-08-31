@@ -1,6 +1,8 @@
 .vs
 **/.vs
 
+.venv
+
 Documentation/build
 Documentation/build/*
 
