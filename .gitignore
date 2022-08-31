@@ -2,6 +2,7 @@
 **/.vs
 
 .venv
+docs/.venv
 
 Documentation/build
 Documentation/build/*

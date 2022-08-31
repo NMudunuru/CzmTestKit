@@ -1,0 +1,13 @@
+ipykernel
+numpy
+sphinx
+Jinja2<3.1
+myst-parser
+nbsphinx
+nbsphinx-link
+docutils
+sphinx-automodapi
+sphinx-panels
+sphinx-tabs
+sphinx_rtd_theme
+groundwork-sphinx-theme
