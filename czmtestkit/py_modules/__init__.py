@@ -13,7 +13,7 @@ def run_sim(name, doe_data, fixed_data, abaqus_simFunc=None, abaqus_postProc=Non
 
         **doe_data** (`dict`): dictionary with variables for tests in the design of experiments.
 
-            :'nPoints': List of indicies corresponding to the tests to be run.
+            :'nPoints': List of indicies corresponding to the tests to be run. (The defintion of this attribute was changed, see version history for details.)
 
             :'Variable_Key_1': List of values for the variable named `Variable_Key_1`.
 
@@ -195,7 +195,13 @@ def run_sim(name, doe_data, fixed_data, abaqus_simFunc=None, abaqus_postProc=Non
 
         .. tabbed:: Version
             
-            v1.0.0
+            ==========  =====
+            **v1.1.0**  Updated type and functionality of doe_data['npoints'].
+
+                        v1.0.0:  (`Int`) Number of points in the design on experiments.
+            
+            v1.0.0      base version
+            ==========  =====
 
         .. tabbed:: Date
             
@@ -205,7 +211,7 @@ def run_sim(name, doe_data, fixed_data, abaqus_simFunc=None, abaqus_postProc=Non
             
             .. tabbed:: Nanditha Mudunuru
 
-                Contribution: v1.0.0
+                Contribution: v1.0.0, v1.1.0
 
                 Email: nanditha.mudunuru@gmail.com
 

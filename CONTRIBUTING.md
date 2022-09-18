@@ -113,4 +113,8 @@ However, it is necessary to locally test the documentation before pushing to the
     $ make html
     ```
     Executing the documentation source will result in a `build` directory in the `docs` subdirectory with the html files in `docs\build\html` subdirectory, where `docs\build\html\index.html` will be the home page for the documentation.
+    If your command line interface does not recongnize the `make` command you can use the following method to generate the documentation build
+    ```bash
+    $ sphinx-build source build
+    ```
 1. Repeat the previous step till the updates in the documentation are satisfactory.

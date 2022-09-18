@@ -29,6 +29,10 @@ Use the following command to upgrade the package.
 
 # Software description 
 
+## v1.1.0
+
+Update in type and functionality of 'nPoints' in doe_data for py_modules.run_sim function.
+
 ## v1.0.0
 
 Overview of current functionality of the package:
