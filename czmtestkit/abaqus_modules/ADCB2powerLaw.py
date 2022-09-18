@@ -50,17 +50,9 @@ def ADCB2powerLaw(dict):
             
             :'DensityBulkTop': Density of the top adherand/ply.
             
-            :'EBot': Tuple of engineering constants for the elastic behaviour of the bottom adherand/ply.
-
-                .. code-block:: python
-
-                    (E1,E2,E3,:math:`\nu`12,:math:`\nu`13,:math:`\nu`23,G12,G13,G23)
+            :'EBot': Tuple of engineering constants for the elastic behaviour of the bottom adherand/ply. (E1, E2, E3, :math:`\\nu_{12}`, :math:`\\nu_{13}`, :math:`\\nu_{23}`, G12, G13, G23)
             
-            :'ETot': Tuple of engineering constants for the elastic behaviour of the top adherand/ply.
-
-                .. code-block:: python
-
-                    (E1,E2,E3,:math:`\nu`12,:math:`\nu`13,:math:`\nu`23,G12,G13,G23)
+            :'ETot': Tuple of engineering constants for the elastic behaviour of the top adherand/ply. (E1, E2, E3, :math:`\\nu_{12}`, :math:`\\nu_{13}`, :math:`\\nu_{23}`, G12, G13, G23)
             
             :'DensityCz': Density of the cohesive zone
             

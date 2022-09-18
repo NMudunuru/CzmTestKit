@@ -48,11 +48,7 @@ def ASLB(dict):
             
             :'DensityBulk': Density of the bulk material.
             
-            :'E': Tuple of engineering constants for the elastic behaviour of the bulk.
-
-                .. code-block:: python
-
-                    (E1,E2,E3,:math:`\nu`12,:math:`\nu`13,:math:`\nu`23,G12,G13,G23)
+            :'E': Tuple of engineering constants for the elastic behaviour of the bulk. (E1, E2, E3, :math:`\\nu_{12}`, :math:`\\nu_{13}`, :math:`\\nu_{23}`, G12, G13, G23)
             
             :'DensityCz': Density of the cohesive zone
             
